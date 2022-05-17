@@ -1,8 +1,5 @@
-import React from 'react';
-import initialState from '../initialState';
+import React, { useContext } from 'react';
 import Products from '../components/Products';
 export const Home = () => {
-  return (
-    <Products products={initialState.products} />
-  )
-}
+  return <Products />
+};
