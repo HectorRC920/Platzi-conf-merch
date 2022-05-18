@@ -1,5 +1,5 @@
 import React, { useRef, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/components/Information.css';
 import AppContext from '../context/AppContext';
 const Information = () => {
@@ -8,7 +8,7 @@ const Information = () => {
     addToBuyer,
   } = useContext(AppContext);
   const form = useRef(null);
-
+  const history = useNavigate()
   const handleSumTotal = (cart) => {
     let totalSum = cart.reduce((acc, crr) => acc + crr.price, 0);
     return totalSum;
@@ -28,6 +28,7 @@ const Information = () => {
       'phone' : formData.get('phone'),
     }
     addToBuyer(buyer)
+    history('/checkout/payment')
   }
   return (
     <div className="Information">
