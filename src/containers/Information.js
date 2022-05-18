@@ -27,7 +27,6 @@ const Information = () => {
       'cp' : formData.get('cp'),
       'phone' : formData.get('phone'),
     }
-    addToBuyer(buyer)
     history('/checkout/payment')
   }
   return (

@@ -6,12 +6,13 @@ import { handleSumTotal } from '../utils';
 import { PayPalButtons } from '@paypal/react-paypal-js';
 const Payment = () => {
   const {
-    state: { cart },
+    state: { cart }, addToBuyer
   } = useContext(AppContext);
   const [paidFor , setPaidFor] = useState(false)
 
-  const handleApprove = (orderID) => {
+  const handleApprove = (payer) => {
     setPaidFor(true)
+    addToBuyer(payer)
   }
 
   const history = useNavigate()
@@ -50,7 +51,8 @@ const Payment = () => {
                 onApprove={(data, actions) => {
                     return actions.order.capture().then((details) => {
                         const name = details.payer.name.given_name;
-                        handleApprove(data.orderID)
+                        handleApprove(details.payer)
+                        console.log(details.payer)
                     });
                 }}
             />
