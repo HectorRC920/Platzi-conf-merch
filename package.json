@@ -25,9 +25,11 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
+    "leaflet": "^1.8.0",
     "prettier": "^2.6.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-leaflet": "^4.0.0",
     "react-router-dom": "^6.3.0"
   },
   "devDependencies": {

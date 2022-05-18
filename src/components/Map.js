@@ -1,25 +1,20 @@
 import React from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import '../styles/components/Map.css';
+
+
 const Map = () => {
-    const  mapStyles ={
-        height: "50vh",
-        width: "100%"
+  const defaultCenter = [19.4267261, -99.1718706]
 
-    }
-    const defaultCenter = {
-        lat: 20,
-        lng: -99
-    }
   return (
-      <LoadScript googleMapsApiKey='AIzaSyBrs5AguWdW0otPdqd0PdH-Jg6PHx8jB-g'>
-          <GoogleMap 
-          MapStyle={mapStyles}
-          zoom={0}
-          center={defaultCenter}>
-              <Marker position={defaultCenter}/>
-          </GoogleMap>
-      </LoadScript>
-  )
-};
+    <MapContainer center={defaultCenter} zoom={17} scrollWheelZoom={false}>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Marker position={defaultCenter} />
+    </MapContainer>
+  );
+}
 
-export default Map;
+export default Map; 
