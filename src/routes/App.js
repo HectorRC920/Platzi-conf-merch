@@ -10,28 +10,31 @@ import '../styles/components/App.css';
 import Layout from '../components/Layout';
 import useInitialState from '../hooks/useInitialState';
 import AppContext from '../context/AppContext';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 function App() {
   const initialState = useInitialState();
   return (
-    <AppContext.Provider value={initialState}>
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/checkout" element={<Checkout />} />
-            <Route
-              exact
-              path="/checkout/information"
-              element={<Information />}
-            />
-            <Route exact path="/checkout/payment" element={<Payment />} />
-            <Route exact path="/checkout/success" element={<Success />} />
-            <Route element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
-    </AppContext.Provider>
+    <PayPalScriptProvider options={{"client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID}}>
+      <AppContext.Provider value={initialState}>
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/checkout" element={<Checkout />} />
+              <Route
+                exact
+                path="/checkout/information"
+                element={<Information />}
+              />
+              <Route exact path="/checkout/payment" element={<Payment />} />
+              <Route exact path="/checkout/success" element={<Success />} />
+              <Route element={<NotFound />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </AppContext.Provider>
+    </PayPalScriptProvider>
   );
 }
 
