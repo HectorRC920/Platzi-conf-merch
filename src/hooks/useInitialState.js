@@ -17,8 +17,14 @@ const useInitialState = () => {
       cart: state.cart.filter((items, currentIndex) => currentIndex!== indexToRemove),
     });
   };
-
+  const addToBuyer = (payload) => {
+    setState({
+      ...state,
+      buyer: [...state.buyer, payload]
+    })
+  }
   return {
+    addToBuyer,
     addToCart,
     removeFromCart,
     state,
