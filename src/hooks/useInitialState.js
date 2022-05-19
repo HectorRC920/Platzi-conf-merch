@@ -20,7 +20,7 @@ const useInitialState = () => {
   const addToBuyer = (payload) => {
     setState({
       ...state,
-      buyer: [...state.buyer, payload]
+      buyer: payload
     })
   }
   return {

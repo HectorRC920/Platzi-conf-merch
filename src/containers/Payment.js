@@ -12,7 +12,11 @@ const Payment = () => {
 
   const handleApprove = (payer) => {
     setPaidFor(true)
-    addToBuyer(payer)
+    const buyer = {
+      name: payer.name.given_name + " "+ payer.name.surname,
+      complete_address: `${payer.address.address_line_1} ${payer.address.address_line_2} ${payer.address.admin_area_1} ${payer.address.postal_code}`
+    }
+    addToBuyer(buyer)
   }
 
   const history = useNavigate()
